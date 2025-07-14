@@ -41,4 +41,6 @@ int main() {
 
     	cout << (found ? "YES" : "NO") << endl;
     }
+
+    return 0;
 }
