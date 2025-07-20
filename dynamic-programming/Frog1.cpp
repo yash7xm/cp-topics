@@ -7,25 +7,29 @@ int main() {
 
     int n;
     cin >> n;
-    
+
     vector<int> h(n);
     for(int i = 0; i < n; ++i) {
         cin >> h[i];
     }
-    
-    vector<int> dp(n);
-    dp[0] = 0;
-    
+
+    int prev2 = 0; // dp[i-2]
+    int prev1 = 0; // dp[i-1]
+    int curr = 0;
+
     for(int i = 1; i < n; ++i) {
         if(i == 1) {
-            dp[i] = abs(h[i] - h[i-1]);
+            curr = abs(h[i] - h[i - 1]);
         } else {
-            dp[i] = min(dp[i-1] + abs(h[i] - h[i-1]),
-                       dp[i-2] + abs(h[i] - h[i-2]));
+            int one = prev1 + abs(h[i] - h[i - 1]);
+            int two = prev2 + abs(h[i] - h[i - 2]);
+            curr = min(one, two);
         }
+
+        prev2 = prev1;
+        prev1 = curr;
     }
-    
-    cout << dp[n-1] << endl;
-    
+
+    cout << curr << '\n';
     return 0;
 }
