@@ -4,7 +4,7 @@ using namespace std;
 typedef long double ld;
 
 bool canMeet(vector<int>& pos, vector<int>& time, ld T) {
-	ld left = -1e18\, right = 1e18;
+	ld left = -1e18, right = 1e18;
 
 	for(int i=0; i<pos.size(); ++i) {
 		if(time[i] > T) return false;
