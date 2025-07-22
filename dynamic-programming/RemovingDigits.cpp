@@ -1,28 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+int getLargestDigit(int num) {
+    int largest = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        largest = max(largest, digit);
+        num /= 10;
+    }
+    return largest;
+}
 
+int main() {
     int n;
     cin >> n;
-
-    vector<int> dp(n+1, INT_MAX);
-    dp[0] = 0;
-
-    for(int i=1; i<=n; ++i) {
-    	int num = i;
-    	while(num > 0) {
-    		int digit = num % 10;
-    		if(digit != 0 && i-digit >= 0) {
-    			dp[i] = min(dp[i], dp[i-digit] + 1);
-    		}
-    		num /= 10;
-    	}
+    
+    int steps = 0;
+    while (n > 0) {
+        int digit = getLargestDigit(n);
+        n -= digit;
+        steps++;
     }
-
-    cout << dp[n] << endl;
-
+    
+    cout << steps << endl;
+    
     return 0;
 }
