@@ -21,7 +21,7 @@ int main() {
     int n;
     cin >> n;
 
-    vector<pair<ld, ld>> arr(n);  // Initialize with size n
+    vector<pair<ld, ld>> arr(n);
     for(int i = 0; i < n; ++i) {
         cin >> arr[i].first >> arr[i].second;
     }
