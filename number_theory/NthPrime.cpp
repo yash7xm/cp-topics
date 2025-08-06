@@ -27,13 +27,13 @@ int main() {
     	}
     }
 
-    n--;
+    int count = 1; // we already counted 2
     for(int i=3; i <= sieve.size(); i += 2) {
     	if(sieve[i]) {
-    		n--;
+    		count++;
     	}
 
-    	if(n == 0) {
+    	if(count == n) {
     		cout << i << endl;
     		break;
     	}
