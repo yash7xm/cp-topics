@@ -16,7 +16,6 @@ int main() {
     }
 
     vector<long long> dp(x + 1, 0);
-
     dp[0] = 1;
 
     for(int coin : coins) {
