@@ -20,7 +20,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    precompute(); // Call the precompute function to fill the sieve
+    precompute();
 
     int n;
     cin >> n;
@@ -29,7 +29,7 @@ int main() {
     for (long long &a : arr) cin >> a;
 
     for (long long num : arr) {
-        long long root = sqrtl(num); // Use sqrtl for long long to avoid precision issues
+        long long root = sqrtl(num);
         if (root * root == num && root <= MAX && sieve[root]) {
             cout << "YES" << endl;
         } else {
