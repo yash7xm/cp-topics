@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<long long> arr, tree, lazy;
+vector<long long> tree, lazy;
 
 void push(int idx, int l, int r) {
 	if(lazy[idx] != 0) {
@@ -62,8 +62,6 @@ int main() {
 
     int n, m;
     cin >> n >> m;
-
-    arr.resize(n, 0);
 
     tree.resize(4 * n, 0);
     lazy.resize(4 * n, 0);

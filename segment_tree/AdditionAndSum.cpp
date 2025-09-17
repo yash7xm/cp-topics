@@ -1,21 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<long long> arr, tree, lazy;
-
-void build(int idx, int l, int r) {
-	if(l == r) {
-		tree[idx] = arr[l];
-		return;
-	}
-
-	int mid = (l + r) / 2;
-
-	build(2 * idx + 1, l, mid);
-	build(2 * idx + 2, mid + 1, r);
-
-	tree[idx] = tree[2 * idx + 1] + tree[2 * idx + 2];
-}
+vector<long long> tree, lazy;
 
 void push(int idx, int l, int r) {
 	if(lazy[idx] != 0) {
@@ -77,12 +63,8 @@ int main() {
     int n, m;
     cin >> n >> m;
 
-    arr.resize(n, 0);
-
     tree.resize(4 * n, 0);
     lazy.resize(4 * n, 0);
-
-    build(0, 0, n-1);
 
     for(int i=0; i<m; ++i) {
     	int type;
