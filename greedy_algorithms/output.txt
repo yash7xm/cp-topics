@@ -1,1 +1,5 @@
-100
+YES
+NO
+ba
+NO
+cbc
