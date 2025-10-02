@@ -14,9 +14,12 @@ int main() {
         vector<int> a(n), b(n), ans(n);
         vector<int> aid(n);
 
-        for (int i = 0; i < n; i++) cin >> a[i];
-        for (int i = 0; i < n; i++) cin >> b[i];
-        iota(aid.begin(), aid.end(), 0);
+        for (int i = 0; i < n; ++i) cin >> a[i];
+        for (int i = 0; i < n; ++i) cin >> b[i];
+
+        for(int i=0; i < n; ++i) {
+          aid[i] = i;
+        }
 
         // Sort aid according to values of a
         sort(aid.begin(), aid.end(), [&](int l, int r) {
