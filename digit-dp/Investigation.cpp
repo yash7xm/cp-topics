@@ -3,7 +3,7 @@ using namespace std;
 using ll = long long;
 
 vector<int> digits;
-ll dp[12][2][10001][10001];
+ll dp[12][2][10001][100];
 // dp[pos][tight][sumMod][numMod]
 
 int k, len;
