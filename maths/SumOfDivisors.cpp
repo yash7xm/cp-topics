@@ -3,32 +3,39 @@ using namespace std;
 
 static const long long MOD = 1000000007;
 
-// sum from l to r = (l + r) * (r - l + 1) / 2
-long long sum_range(long long l, long long r) {
-    long long cnt = (r - l + 1) % MOD;
-    long long s = (l + r) % MOD;
-    // multiply then divide by 2 using modular inverse
-    return (s * cnt % MOD) * ((MOD + 1) / 2) % MOD;
+// Computes sum of integers from L to R modulo MOD
+// sum = (R-L+1)*(L+R)/2
+long long range_sum(long long L, long long R) {
+    long long cnt = (R - L + 1) % MOD;
+    long long sumLR = ( (L % MOD) + (R % MOD) ) % MOD;
+
+    // multiply safely, handle /2 under mod
+    long long res = (cnt * sumLR) % MOD;
+
+    // divide by 2 modulo MOD
+    if (res % 2 == 0) res /= 2;
+    else res = (res + MOD) / 2;
+
+    return res % MOD;
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
     long long n;
     cin >> n;
 
     long long ans = 0;
+    long long d = 1;
 
-    for (long long d = 1; d <= n; ) {
-        long long q = n / d;
-        long long r = n / q;
-        long long contrib = q % MOD * sum_range(d, r) % MOD;
-        ans = (ans + contrib) % MOD;
+    while (d <= n) {
+        long long q = n / d;          // floor(n/d)
+        long long r = n / q;          // last d giving same q
+
+        long long sumD = range_sum(d, r);
+        ans = (ans + (sumD * (q % MOD)) % MOD) % MOD;
+
         d = r + 1;
     }
 
-    cout << ans << "\n";
-    return 0;
+    cout << ans % MOD;
 }
 
