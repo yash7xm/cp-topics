@@ -11,6 +11,13 @@ void solve() {
   cout << (a ^ x) + (b ^ x) << "\n";
 }
 
+void solve_maths {
+  int a, b;
+  cin >> a >> b;
+
+  cout << a ^ b << "\n";
+}
+
 void solve_loop_way {
   int a, b;
   cin >> a >> b;
